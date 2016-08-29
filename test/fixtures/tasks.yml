@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  estimated_time: 2016-08-29 20:08:40
+  real_time: 2016-08-29 20:08:40
+  sprint: one
+
+two:
+  title: MyString
+  description: MyString
+  estimated_time: 2016-08-29 20:08:40
+  real_time: 2016-08-29 20:08:40
+  sprint: two
