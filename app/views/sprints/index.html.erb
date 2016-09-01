@@ -19,7 +19,7 @@
         <td><%= sprint.name %></td>
         <td><%= sprint.opening_date %></td>
         <td><%= sprint.closing_date %></td>
-        <td><%= sprint.project %></td>
+        <td><%= sprint.project.name %></td>
         <td><%= link_to 'Show', sprint %></td>
         <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
         <td><%= link_to 'Destroy', sprint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
