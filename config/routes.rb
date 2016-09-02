@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'teams#index'
+  root 'projects#index'
   resources :tasks
   resources :sprints
   resources :projects
