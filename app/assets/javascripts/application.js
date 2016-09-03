@@ -11,7 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require select2
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+var ready;
+ready = function(){
+ 	$('.select2').select2();
+}
+
+$(document).on('turbolinks:load', ready);
+
