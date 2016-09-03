@@ -21,9 +21,12 @@
 </p>
 
 <p>
-  <strong>Expected value:</strong>
-  <%= @project.expected_value %>
+  <strong> Users in this project </strong>
+  <ul>
+    <% @project.users.each do |user| %>
+	<li> <%= user.email %></li>
+    <% end %>
+  </ul>
 </p>
-
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

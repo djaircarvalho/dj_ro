@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects
+      @projects = current_user.projects
   end
 
   # GET /projects/1
@@ -69,6 +69,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :opening_date, :closing_date, :expected_value, :expected_value)
+      params.require(:project).permit(:name, :opening_date, :closing_date, :expected_value, :user_ids => [])
     end
 end
