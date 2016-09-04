@@ -21,16 +21,18 @@
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong ><%= alert %></strong>
           </div>    
-        <% end %>  
+        <% end %> 
+        
        <% if user_signed_in? %>
-     	 <div>
-           <div>Signed in as... <%= current_user.email %></div>
-       	   <%= link_to('Projects', projects_path) %>
-       	   <%= link_to('Sprints', sprints_path) %>
-           <%= link_to('Tasks', tasks_path) %>
-           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-         </div> 
-      <% end %> 
+          <nav class="navbar navbar-default navbar-fixed-top">
+  	    <div class="container">
+    	       <%= link_to 'Projects', projects_path, class:"btn btn-default navbar-btn"  %>
+               <%= link_to'Sprints', sprints_path, class:"btn btn-default navbar-btn"  %>
+               <%= link_to'Tasks', tasks_path, class:"btn btn-default navbar-btn" %>
+               <%= link_to'Logout', destroy_user_session_path, :method => :delete, class:"btn btn-danger navbar-btn pull-right"  %>
+  	    </div>
+	  </nav> 
+       <% end %> 
      
       <%= yield %>
     </div>
