@@ -16,7 +16,7 @@
 
 <p>
   <strong>Expected value:</strong>
-  <%= @project.expected_value %>
+  <%= number_to_currency @project.expected_value,{unit: 'R$ '} %>
 </p>
 
 <p>
