@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_and_belongs_to_many :teams
   has_and_belongs_to_many :projects
+  has_many :sprints, through: :projects
 end

@@ -29,7 +29,7 @@
   <div class="field">
     <%= f.label :project_id %>
   <!--  <%= f.collection_select :project_id , Project.all, :id, :name, {},  {:class=>'select2'} %> -->
-    <%= f.select :project_id, Project.all.collect {|project| [ project.name, project.id ] },{nclude_blank: true,prompt: 'Select Project'}, class: 'select2' %>
+    <%= f.select :project_id, current_user.projects.all.collect {|project| [ project.name, project.id ] },{nclude_blank: true,prompt: 'Select Project'}, class: 'select2' %>
   </div>
 
   <div class="actions">
