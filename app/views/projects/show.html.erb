@@ -7,12 +7,12 @@
 
 <p>
   <strong>Opening date:</strong>
-  <%= @project.opening_date %>
+  <%= @project.opening_date.strftime('%y/%m/%Y') %>
 </p>
 
 <p>
   <strong>Closing date:</strong>
-  <%= @project.closing_date %>
+  <%= @project.closing_date.strftime('%y/%m/%Y') %>
 </p>
 
 <p>
