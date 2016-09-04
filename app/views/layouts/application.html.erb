@@ -9,7 +9,8 @@
   </head>
 
   <body>
-      <% unless notice.nil? %>
+      <div class='container'>
+        <% unless notice.nil? %>
           <div class="alert alert-info fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strog><%= notice %></strong>
@@ -18,18 +19,20 @@
         <% unless alert.nil? %>
           <div class="alert alert-danger fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <p ><%= alert %></p>
+            <strong ><%= alert %></strong>
           </div>    
         <% end %>  
-     <% if user_signed_in? %>
-     	<div>
+       <% if user_signed_in? %>
+     	 <div>
            <div>Signed in as... <%= current_user.email %></div>
        	   <%= link_to('Projects', projects_path) %>
        	   <%= link_to('Sprints', sprints_path) %>
            <%= link_to('Tasks', tasks_path) %>
            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-     <% end %> 
-     </div>
-    <%= yield %>
+         </div> 
+      <% end %> 
+     
+      <%= yield %>
+    </div>
   </body>
 </html>
