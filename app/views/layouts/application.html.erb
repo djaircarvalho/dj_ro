@@ -29,11 +29,20 @@
     	       <%= link_to 'Projects', projects_path, class:"btn btn-default navbar-btn"  %>
                <%= link_to'Sprints', sprints_path, class:"btn btn-default navbar-btn"  %>
                <%= link_to'Tasks', tasks_path, class:"btn btn-default navbar-btn" %>
-               <%= link_to'Logout', destroy_user_session_path, :method => :delete, class:"btn btn-danger navbar-btn pull-right"  %>
+               <%= link_to'Logout', destroy_user_session_path, :method => :delete, class:"btn btn-warning navbar-btn pull-right"  %>
   	    </div>
 	  </nav> 
        <% end %> 
-     
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+            <input type="text" class="form-control" placeholder="Search for...">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->     
       <%= yield %>
     </div>
   </body>

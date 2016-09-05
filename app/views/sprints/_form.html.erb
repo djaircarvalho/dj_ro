@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :opening_date %>
-    <%= f.date_select :opening_date %>
+    <%= f.date_select :opening_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :closing_date %>
-    <%= f.date_select :closing_date %>
+    <%= f.date_select :closing_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="fomr-group">
     <%= f.label :project_id %>
   <!--  <%= f.collection_select :project_id , Project.all, :id, :name, {},  {:class=>'select2'} %> -->
-    <%= f.select :project_id, current_user.projects.all.collect {|project| [ project.name, project.id ] },{nclude_blank: true,prompt: 'Select Project'}, class: 'select2' %>
+    <%= f.select :project_id, current_user.projects.all.collect {|project| [ project.name, project.id ] },{nclude_blank: true,prompt: 'Select Project'}, class: 'select2 form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
   </div>
 <% end %>

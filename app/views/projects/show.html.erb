@@ -1,31 +1,31 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<div class="panel panel-default">
+    <div class="panel-heading"> <%= @project.name %> </div>
+    <div class="panel-body">
+    <p> <strong> Opening date: </strong><%=  @project.opening_date.strftime('%y/%m/%Y') %> </p>
+      <p> <strong> Closing date: </strong><%= @project.closing_date.strftime('%y/%m/%Y') %></p>
+      <p> <strong> Expected value: </strong><%=  number_to_currency @project.expected_value,{unit: 'R$ '} %></p>
+      <div class="panel panel-default" > <div class="panel-heading"> Users in this project </div>
+	<div class="panel-body">
+          <% @project.users.each do |user| %>
+            <p> <%= user.email %></p>
+          <% end %>
+       </div>
+     </div>
+     <div class="panel panel-default" > <div class="panel-heading"> Sprintis of this project </div>
+        <div class="panel-body">
+          <% @project.sprints.each do |sprint| %>
+            <p> <%= sprint.name %></p>
+          <% end %>
+       </div>
+     </div>
 
-<p>
-  <strong>Opening date:</strong>
-  <%= @project.opening_date.strftime('%y/%m/%Y') %>
-</p>
+    </div>
+  </div>
 
-<p>
-  <strong>Closing date:</strong>
-  <%= @project.closing_date.strftime('%y/%m/%Y') %>
-</p>
 
-<p>
-  <strong>Expected value:</strong>
-  <%= number_to_currency @project.expected_value,{unit: 'R$ '} %>
-</p>
 
-<p>
-  <strong> Users in this project </strong>
-  <ul>
-    <% @project.users.each do |user| %>
-	<li> <%= user.email %></li>
-    <% end %>
-  </ul>
-</p>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class='pull-right' >
+  <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-info' %> 
+  <%= link_to 'Back', projects_path, class: 'btn btn-default' %>
+</div>

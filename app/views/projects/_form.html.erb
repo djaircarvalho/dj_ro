@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :opening_date %>
-    <%= f.date_select :opening_date %>
+    <%= f.date_select :opening_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :closing_date %>
-    <%= f.date_select :closing_date %>
+    <%= f.date_select :closing_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :expected_value %>
-    <%= f.text_field :expected_value %>
+    <%= f.text_field :expected_value, class: 'form-control' %>
   </div>
   
- <div class="field">
+ <div class="form-group">
       <%= f.label :users %>
-      <%= f.collection_select :user_ids, User.all, :id, :email, {},  {:multiple => true, :class=>'select2'} %> 
+      <%= f.collection_select :user_ids, User.all, :id, :email, {},  {:multiple => true, :class=>'select2 form-control'} %> 
  <div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
   </div>
 <% end %>

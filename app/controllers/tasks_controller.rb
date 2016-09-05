@@ -24,7 +24,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params_new)
 
     respond_to do |format|
       if @task.save
@@ -71,4 +71,9 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :description, :estimated_time, :real_time, :sprint_id)
     end
+    
+    def task_params_new
+      params.require(:task).permit(:title, :description, :estimated_time, :sprint_id)
+    end
+
 end
