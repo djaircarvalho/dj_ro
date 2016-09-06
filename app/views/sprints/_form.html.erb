@@ -1,6 +1,6 @@
 <%= form_for(sprint) do |f| %>
   <% if sprint.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class = "alert alert-danger fade in">
       <h2><%= pluralize(sprint.errors.count, "error") %> prohibited this sprint from being saved:</h2>
 
       <ul>
@@ -18,12 +18,14 @@
 
   <div class="form-group">
     <%= f.label :opening_date %>
-    <%= f.date_select :opening_date, class: 'form-control' %>
+    <%= f.date_select :opening_date, {:order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year},
+    {:class => "select2 "} %>
   </div>
 
   <div class="form-group">
     <%= f.label :closing_date %>
-    <%= f.date_select :closing_date, class: 'form-control' %>
+    <%= f.date_select :closing_date, {:order => [:day, :month, :year], :start_year => 1920, :end_year => 2100},
+    {:class => "select2 "} %>
   </div>
 
   <div class="fomr-group">

@@ -4,7 +4,7 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = Sprint.all
+    @sprints = current_user.sprints.all
   end
 
   # GET /sprints/1
