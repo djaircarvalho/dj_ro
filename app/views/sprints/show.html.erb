@@ -1,24 +1,12 @@
+<div class="panel panel-default">
+    <div class="panel-heading"> <%= @sprint.name %> </div>
+    <div class="panel-body">
+      <p> <strong> Opening date: </strong><%=  @sprint.opening_date.strftime('%y/%m/%Y') %> </p>
+      <p> <strong> Closing date: </strong><%= @sprint.closing_date.strftime('%y/%m/%Y') %></p>
+      <p> <strong> Project: </strong><%= link_to @sprint.project.name, @sprint.project %></p>
+    </div>
+ </div>
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @sprint.name %>
-</p>
-
-<p>
-  <strong>Opening date:</strong>
-  <%= @sprint.opening_date %>
-</p>
-
-<p>
-  <strong>Closing date:</strong>
-  <%= @sprint.closing_date %>
-</p>
-
-<p>
-  <strong>Project:</strong>
-  <%= @sprint.project.name%>
-</p>
-
-<%= link_to 'Edit', edit_sprint_path(@sprint) %> |
-<%= link_to 'Back', sprints_path %>
+<%= link_to 'Edit', edit_sprint_path(@sprint), class: 'btn btn-info' %>
+<%= link_to 'Back', sprints_path, class: 'btn btn-default' %>

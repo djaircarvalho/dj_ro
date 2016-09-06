@@ -15,7 +15,7 @@
      <div class="panel panel-default" > <div class="panel-heading"> Sprintis of this project </div>
         <div class="panel-body">
           <% @project.sprints.each do |sprint| %>
-            <p> <%= sprint.name %></p>
+            <p> <%= link_to sprint.name, sprint  %></p>
           <% end %>
        </div>
      </div>

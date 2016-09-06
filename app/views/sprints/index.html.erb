@@ -8,6 +8,7 @@
       <li class="list-group-item  clearfix">
         <h2><%= sprint.name %></h2>
         <h3><%= link_to sprint.project.name, sprint.project %></h3>
+         <p >Number of Tasks : <%= sprint.tasks.size  %></p>
         <div class="pull-right ">
           <small class='list-group-item list-group-item-info' >Opening Date: <%= sprint.opening_date.strftime('%y/%m/%Y')  %></small>
           <small class='list-group-item list-group-item-info' >Closing date: <%= sprint.opening_date.strftime('%y/%m/%Y') %></small>
