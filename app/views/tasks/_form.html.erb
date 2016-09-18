@@ -1,5 +1,5 @@
 
-<%= form_for(task) do |f| %>
+<%= form_for([project, sprint, task]) do |f| %>
   <% if task.errors.any? %>
     <div id="error_explanation" class = "alert alert-danger fade in">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -43,4 +43,3 @@
     <%= f.submit 'Save', class: "btn btn-success" %>
   </div>
 <% end %>
-

@@ -9,17 +9,17 @@
     <% @tasks.each do |task| %>
       <li class="list-group-item  clearfix">
         <h2><%= task.title %></h2>
-        <h4><%= task.description %> <h4> 
-        <h4> <%=link_to task.sprint.name, task.sprint %>, <%= link_to task.sprint.project.name, task.sprint.project %></h4>
+        <h4><%= task.description %> <h4>
+        <h4> <%=link_to task.sprint.name, [task.sprint.project,task.sprint] %>,
+           <%= link_to task.sprint.project.name, task.sprint.project %></h4>
         <div class="pull-right ">
           <small class='list-group-item list-group-item-info' >Estimated Time: <%= task.estimated_time  %></small>
           <small class='list-group-item list-group-item-info' >Real Time: <%= task.real_time  %></small>
         </div>
-        <h5><%= link_to 'Show', task, class: 'btn btn-info' %> <%= link_to 'Edit', edit_task_path(task),class: 'btn btn-default' %> <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></h5>
+        <h5><%= link_to 'Show', [task.sprint.project, task.sprint, task], class: 'btn btn-info' %> <%= link_to 'Edit', edit_project_sprint_task_path(task.sprint.project, task.sprint, task),class: 'btn btn-default' %> <%= link_to 'Destroy', [task.sprint.project, task.sprint, task], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></h5>
       </li>
     <% end %>
   </ol>
 </section>
 
-<%= link_to 'New Task', new_task_path, class: 'btn btn-success' %>
-
+<%= link_to 'New Task', new_project_sprint_task_path, class: 'btn btn-success' %>

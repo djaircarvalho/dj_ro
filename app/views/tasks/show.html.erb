@@ -1,6 +1,4 @@
-
-
-  <div class="panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading"> <%= @task.title %> </div>
     <div class="panel-body">
       <p> <strong> Description: </strong><%=  @task.description %> </p>
@@ -9,7 +7,7 @@
       <p> <strong> Sprint: </strong><%= @task.sprint.name %></p>
     </div>
   </div>
- 
 
-<%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-info' %>
-<%= link_to 'Back', tasks_path, class: 'btn btn-default' %>
+
+<%= link_to 'Edit', edit_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), class: 'btn btn-info' %>
+<%= link_to 'Back', [@task.sprint.project, @task.sprint], class: 'btn btn-default' %>

@@ -2,9 +2,8 @@
 
    <h1>Editing Task</h1>
 
-   <%= render 'form', task: @task %>
+   <%= render 'form', project: @project, sprint: @sprint,  task: @task %>
 
-   <%= link_to 'Show', @task, class: 'btn btn-info' %> 
-   <%= link_to 'Back', tasks_path, class: 'btn btn-default' %>
+   <%= link_to 'Show', [@project,  @sprint,  @task], class: 'btn btn-info' %>
+   <%= link_to 'Back', [@project,  @sprint], class: 'btn btn-default' %>
 <div class="col-lg-8 center" >
-
