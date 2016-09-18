@@ -20,15 +20,14 @@
           <div class="alert alert-danger fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong ><%= alert %></strong>
-          </div>    
-        <% end %> 
-        
+          </div>
+        <% end %>
+
        <% if user_signed_in? %>
           <nav class="navbar navbar-default navbar-fixed-top">
   	    <div class="container">
     	       <%= link_to 'Projects', projects_path, class:"btn btn-default navbar-btn"  %>
-               <%= link_to'Sprints', sprints_path, class:"btn btn-default navbar-btn"  %>
-               <%= link_to'Tasks', tasks_path, class:"btn btn-default navbar-btn" %>
+
           <!--     <form class="navbar-form navbar-right">
                  <div class="form-group">
                    <input type="text" class="form-control" placeholder="Search">
@@ -37,9 +36,9 @@
                </form> -->
                <%= link_to'Logout', destroy_user_session_path, :method => :delete, class:"btn btn-warning navbar-btn pull-right"  %>
   	    </div>
-	  </nav> 
-	  
-       <% end %> 
+	  </nav>
+
+       <% end %>
       <%= yield %>
     </div>
   </body>
