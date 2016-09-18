@@ -4,7 +4,7 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = current_user.sprints.all
+    @sprints = current_user.sprints.where(project_id: params[:project_id])
   end
 
   # GET /sprints/1
