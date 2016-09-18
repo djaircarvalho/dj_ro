@@ -15,7 +15,7 @@
      <div class="panel panel-default" > <div class="panel-heading"> Sprintis of this project </div>
         <div class="panel-body">
           <% @project.sprints.each do |sprint| %>
-            <p> <%= link_to sprint.name, sprint  %></p>
+            <p> <%= link_to sprint.name, [@project,sprint]   %></p>
           <% end %>
        </div>
      </div>
@@ -26,6 +26,6 @@
 
 
 <div class='pull-right' >
-  <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-info' %> 
+  <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-info' %>
   <%= link_to 'Back', projects_path, class: 'btn btn-default' %>
 </div>
