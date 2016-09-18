@@ -2,7 +2,7 @@
 
   <h1>Editing Sprint</h1>
 
-  <%= render 'form', sprint: @sprint %>
+  <%= render 'form', project: @project, sprint: @sprint %>
   <div class='pull-right' >
     <%= link_to 'Show', [@sprint.project, @sprint], class: 'btn btn-info' %>
     <%= link_to 'Back', @sprint.project, class: 'btn btn-default' %>
