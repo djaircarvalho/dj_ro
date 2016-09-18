@@ -8,5 +8,5 @@
  </div>
 
 
-<%= link_to 'Edit', edit_sprint_path(@sprint), class: 'btn btn-info' %>
-<%= link_to 'Back', sprints_path, class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_project_sprint_path(@sprint.project, @sprint), class: 'btn btn-info' %>
+<%= link_to 'Back', project_sprints_path(@sprint.project) , class: 'btn btn-default' %>
