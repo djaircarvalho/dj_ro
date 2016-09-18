@@ -14,16 +14,19 @@ class SprintsController < ApplicationController
 
   # GET /sprints/new
   def new
-    @sprint = Sprint.new
+    set_project()
+    @sprint = @project.sprints.new
   end
 
   # GET /sprints/1/edit
   def edit
+    set_project()
   end
 
   # POST /sprints
   # POST /sprints.json
   def create
+    set_project()
     @sprint = Sprint.new(sprint_params)
 
     respond_to do |format|
@@ -66,7 +69,9 @@ class SprintsController < ApplicationController
     def set_sprint
       @sprint = Sprint.find(params[:id])
     end
-
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def sprint_params
       params.require(:sprint).permit(:name, :opening_date, :closing_date, :project_id)
