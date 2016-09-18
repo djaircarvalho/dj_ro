@@ -4,7 +4,7 @@
 
   <%= render 'form', sprint: @sprint %>
   <div class='pull-right' >
-    <%= link_to 'Show', @sprint, class: 'btn btn-info' %>
-    <%= link_to 'Back', sprints_path,class: 'btn btn-default' %>
+    <%= link_to 'Show', [@sprint.project, @sprint], class: 'btn btn-info' %>
+    <%= link_to 'Back', @sprint.project, class: 'btn btn-default' %>
   </div>
 </div>
