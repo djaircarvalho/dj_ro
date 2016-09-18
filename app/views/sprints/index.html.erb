@@ -13,10 +13,11 @@
           <small class='list-group-item list-group-item-info' >Opening Date: <%= sprint.opening_date.strftime('%y/%m/%Y')  %></small>
           <small class='list-group-item list-group-item-info' >Closing date: <%= sprint.opening_date.strftime('%y/%m/%Y') %></small>
         </div>
-        <h5><%= link_to 'Show', sprint, class: 'btn btn-info' %> <%= link_to 'Edit', edit_sprint_path(sprint),class: 'btn btn-default' %> <%= link_to 'Destroy', sprint, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></h5>
+        <h5><%= link_to 'Show', [ sprint.project, sprint], class: 'btn btn-info' %> <%= link_to 'Edit', edit_project_sprint_path(sprint.project, sprint),class: 'btn btn-default' %>
+          <%= link_to 'Destroy', [sprint.project, sprint], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></h5>
       </li>
     <% end %>
   </ol>
 </section>
 
-<%= link_to 'New Sprint', new_sprint_path, class: 'btn btn-success' %>
+<%= link_to 'New Sprint', new_project_sprint_path, class: 'btn btn-success' %>
