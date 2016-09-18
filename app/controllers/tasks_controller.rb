@@ -14,11 +14,14 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    set_project_and_sprint()
+    @task = Task.new()
+    @task.sprint = @sprint
   end
 
   # GET /tasks/1/edit
   def edit
+    set_project_and_sprint()
   end
 
   # POST /tasks
@@ -28,7 +31,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -54,9 +57,10 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
+    set_project_and_sprint()
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to [@project,@sprint], notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,11 +71,16 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
+    def set_project_and_sprint
+      @project = Project.find(params[:project_id])
+      @sprint = Sprint.find(params[:sprint_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:title, :description, :estimated_time, :real_time, :sprint_id)
     end
-    
+
     def task_params_new
       params.require(:task).permit(:title, :description, :estimated_time, :sprint_id)
     end
