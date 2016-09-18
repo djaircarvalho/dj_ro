@@ -27,6 +27,7 @@
           <nav class="navbar navbar-default navbar-fixed-top">
   	    <div class="container">
           <small> <%= current_user.name %> </small>
+           <%= link_to 'Home', root_path, class:"btn btn-default navbar-btn"  %>
           <% if policy(Project).index? %>
     	       <%= link_to 'Projects', projects_path, class:"btn btn-default navbar-btn"  %>
           <% end %>
