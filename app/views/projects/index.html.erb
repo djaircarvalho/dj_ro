@@ -10,11 +10,22 @@
         <div class="pull-right ">
           <small class='list-group-item list-group-item-info' >Opening Date: <%= project.opening_date.strftime('%y/%m/%Y')  %></small>
           <small class='list-group-item list-group-item-info' >Closing date: <%= project.closing_date.strftime('%y/%m/%Y') %></small>
-        </div> 
-        <h5><%= link_to 'Show', project, class: 'btn btn-info' %> <%= link_to 'Edit', edit_project_path(project),class: 'btn btn-default' %> <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></h5>
+        </div>
+        <h5>
+          <% if policy(Project).show? %>
+            <%= link_to 'Show', project, class: 'btn btn-info' %>
+          <% end %>
+          <% if policy(Project).edit? %>
+            <%= link_to 'Edit', edit_project_path(project),class: 'btn btn-default' %>
+          <% end %>
+          <% if policy(Project).destroy? %>
+            <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %>
+          <% end %>
+        </h5>
       </li>
     <% end %>
   </ol>
 </section>
-
-<%= link_to 'New Project', new_project_path, :class => 'btn btn-success' %>
+<% if policy(Project).new? %>
+  <%= link_to 'New Project', new_project_path, :class => 'btn btn-success' %>
+<% end %>

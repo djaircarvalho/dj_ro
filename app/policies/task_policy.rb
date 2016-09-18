@@ -1,11 +1,10 @@
-class SprintPolicy < ApplicationPolicy
-  def index?
+class TaskPolicy < ApplicationPolicy
+    def index?
       true
     end
 
     def show?
-      @user.admin? || @user.sprints.include?(@record)
-
+      @user.admin? || @user.tasks.include?(@record)
     end
 
     def new?

@@ -8,6 +8,8 @@
     </div>
   </div>
 
+<% if policy(Task).edit? %>
+  <%= link_to 'Edit', edit_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), class: 'btn btn-info' %>
+<% end %>
 
-<%= link_to 'Edit', edit_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), class: 'btn btn-info' %>
-<%= link_to 'Back', [@task.sprint.project, @task.sprint], class: 'btn btn-default' %>
+<%= link_to 'Back', project_sprint_tasks_path([@task.sprint.project, @task.sprint]), class: 'btn btn-default' %>

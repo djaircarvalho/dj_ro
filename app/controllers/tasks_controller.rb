@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    authorize @task
   end
 
   # GET /tasks/new
@@ -17,16 +18,20 @@ class TasksController < ApplicationController
     set_project_and_sprint()
     @task = Task.new()
     @task.sprint = @sprint
+    authorize @task
   end
 
   # GET /tasks/1/edit
   def edit
+    authorize @task
     set_project_and_sprint()
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
+    authorize @task
+    set_project_and_sprint()
     @task = Task.new(task_params_new)
 
     respond_to do |format|
@@ -43,6 +48,8 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    authorize @task
+    set_project_and_sprint()
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully updated.' }
@@ -57,6 +64,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
+    authorize @task
     set_project_and_sprint()
     @task.destroy
     respond_to do |format|

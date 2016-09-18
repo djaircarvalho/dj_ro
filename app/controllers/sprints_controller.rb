@@ -5,27 +5,32 @@ class SprintsController < ApplicationController
   # GET /sprints.json
   def index
     @sprints = current_user.sprints.where(project_id: params[:project_id])
+    authorize Sprint
   end
 
   # GET /sprints/1
   # GET /sprints/1.json
   def show
+    authorize @sprint
   end
 
   # GET /sprints/new
   def new
     set_project()
     @sprint = @project.sprints.new
+    authorize @sprint
   end
 
   # GET /sprints/1/edit
   def edit
+    authorize @sprint
     set_project()
   end
 
   # POST /sprints
   # POST /sprints.json
   def create
+    authorize @sprint
     set_project()
     @sprint = Sprint.new(sprint_params)
 
@@ -43,6 +48,7 @@ class SprintsController < ApplicationController
   # PATCH/PUT /sprints/1
   # PATCH/PUT /sprints/1.json
   def update
+    authorize @sprint
     respond_to do |format|
       if @sprint.update(sprint_params)
         format.html { redirect_to [@sprint.project, @sprint], notice: 'Sprint was successfully updated.' }
@@ -57,6 +63,7 @@ class SprintsController < ApplicationController
   # DELETE /sprints/1
   # DELETE /sprints/1.json
   def destroy
+    authorize @sprint
     @sprint.destroy
     respond_to do |format|
       format.html { redirect_to @sprint.project, notice: 'Sprint was successfully destroyed.' }

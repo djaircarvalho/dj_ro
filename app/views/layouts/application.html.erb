@@ -26,8 +26,10 @@
        <% if user_signed_in? %>
           <nav class="navbar navbar-default navbar-fixed-top">
   	    <div class="container">
+          <small> <%= current_user.name %> </small>
+          <% if policy(Project).index? %>
     	       <%= link_to 'Projects', projects_path, class:"btn btn-default navbar-btn"  %>
-
+          <% end %>
           <!--     <form class="navbar-form navbar-right">
                  <div class="form-group">
                    <input type="text" class="form-control" placeholder="Search">

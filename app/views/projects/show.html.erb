@@ -22,10 +22,14 @@
 
     </div>
   </div>
-
-
-
+  
 <div class='pull-right' >
-  <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-info' %>
-  <%= link_to 'Back', projects_path, class: 'btn btn-default' %>
+  <% if policy(Project).edit? %>
+    <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-info' %>
+  <% end %>
+  <% if policy(Project).edit? %>
+    <%= link_to 'Back', projects_path, class: 'btn btn-default' %>
+  <% else %>
+    <%= link_to 'Home', root_path, class: 'btn btn-default' %>
+  <% end %>
 </div>
