@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem "select2-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem "pundit"
 gem 'bootstrap-sass'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 

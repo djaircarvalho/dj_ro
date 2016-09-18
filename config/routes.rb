@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'projects#index'
-  
+  root 'default#index'
+
   resources :projects do
     resources :sprints do
         resources :tasks
