@@ -30,10 +30,9 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    authorize @task
     set_project_and_sprint()
     @task = Task.new(task_params_new)
-
+    authorize @task, :new?
     respond_to do |format|
       if @task.save
         format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully created.' }
@@ -48,7 +47,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    authorize @task
+    authorize @task, :edit?
     set_project_and_sprint()
     respond_to do |format|
       if @task.update(task_params)
@@ -86,7 +85,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :estimated_time, :real_time, :sprint_id)
+      params.require(:task).permit(:title, :description, :estimated_time, :status, :time_spent, :sprint_id)
     end
 
     def task_params_new

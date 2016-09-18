@@ -11,7 +11,7 @@
            <%= link_to task.sprint.project.name, task.sprint.project %></h4>
         <div class="pull-right ">
           <small class='list-group-item list-group-item-info' >Estimated Time: <%= task.estimated_time  %></small>
-          <small class='list-group-item list-group-item-info' >Real Time: <%= task.real_time  %></small>
+          <small class='list-group-item list-group-item-info' > Time Spent: <%= task.time_spent  %></small>
         </div>
         <h5><%= link_to 'Show', [task.sprint.project, task.sprint, task], class: 'btn btn-info' %>
           <% if policy(Task).edit? %>
@@ -27,4 +27,4 @@
 </section>
 <% if policy(Task).new? %>
   <%= link_to 'New Task', new_project_sprint_task_path, class: 'btn btn-success' %>
-<% end %>  
+<% end %>

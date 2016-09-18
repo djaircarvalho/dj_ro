@@ -32,7 +32,7 @@ gem "select2-rails"
 gem "pundit"
 gem 'bootstrap-sass'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
-
+gem 'enumerize'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
