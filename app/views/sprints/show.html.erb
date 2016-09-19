@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading"> <%= @sprint.name %> </div>
     <div class="panel-body">
-      <p> <strong> Opening date: </strong><%=  @sprint.opening_date.strftime('%y/%m/%Y') %> </p>
-      <p> <strong> Closing date: </strong><%= @sprint.closing_date.strftime('%y/%m/%Y') %></p>
+      <p> <strong> Opening date: </strong><%=  @sprint.opening_date %> </p>
+      <p> <strong> Closing date: </strong><%= @sprint.closing_date %></p>
       <p> <strong> Project: </strong><%= link_to @sprint.project.name, @sprint.project %></p>
     </div>
  </div>

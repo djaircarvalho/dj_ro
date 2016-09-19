@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   extend Enumerize
   belongs_to :sprint
-  validates :title, presence: true
+  validates :title, :estimated_time, presence: true
 
   enumerize :status, in: [:pending, :running, :stoped, :finished, :canceled, :homologating, :approved, :inconsistent, :implanted ], default: :pending, scope: true
 

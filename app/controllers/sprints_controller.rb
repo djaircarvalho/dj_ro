@@ -30,10 +30,9 @@ class SprintsController < ApplicationController
   # POST /sprints
   # POST /sprints.json
   def create
-    authorize @sprint
     set_project()
     @sprint = Sprint.new(sprint_params)
-
+    authorize @sprint, :new?
     respond_to do |format|
       if @sprint.save
         format.html { redirect_to [@sprint.project, @sprint], notice: 'Sprint was successfully created.' }
@@ -48,7 +47,7 @@ class SprintsController < ApplicationController
   # PATCH/PUT /sprints/1
   # PATCH/PUT /sprints/1.json
   def update
-    authorize @sprint
+    authorize @sprint, :edit?
     respond_to do |format|
       if @sprint.update(sprint_params)
         format.html { redirect_to [@sprint.project, @sprint], notice: 'Sprint was successfully updated.' }

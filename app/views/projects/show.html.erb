@@ -2,8 +2,8 @@
 <div class="panel panel-default">
     <div class="panel-heading"> <%= @project.name %> </div>
     <div class="panel-body">
-    <p> <strong> Opening date: </strong><%=  @project.opening_date.strftime('%y/%m/%Y') %> </p>
-      <p> <strong> Closing date: </strong><%= @project.closing_date.strftime('%y/%m/%Y') %></p>
+    <p> <strong> Opening date: </strong><%=  @project.opening_date %> </p>
+      <p> <strong> Closing date: </strong><%= @project.closing_date %></p>
       <p> <strong> Expected value: </strong><%=  number_to_currency @project.expected_value,{unit: 'R$ '} %></p>
       <div class="panel panel-default" > <div class="panel-heading"> Users in this project </div>
 	<div class="panel-body">
@@ -22,7 +22,7 @@
 
     </div>
   </div>
-  
+
 <div class='pull-right' >
   <% if policy(Project).edit? %>
     <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-info' %>

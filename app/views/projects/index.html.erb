@@ -8,8 +8,8 @@
       <li class="list-group-item  clearfix">
         <h2><%= project.name %></h2>
         <div class="pull-right ">
-          <small class='list-group-item list-group-item-info' >Opening Date: <%= project.opening_date.strftime('%y/%m/%Y')  %></small>
-          <small class='list-group-item list-group-item-info' >Closing date: <%= project.closing_date.strftime('%y/%m/%Y') %></small>
+          <small class='list-group-item list-group-item-info' >Opening Date: <%= project.opening_date  %></small>
+          <small class='list-group-item list-group-item-info' >Closing date: <%= project.closing_date %></small>
         </div>
         <h5>
           <% if policy(Project).show? %>
