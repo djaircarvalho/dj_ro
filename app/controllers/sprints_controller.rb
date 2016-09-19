@@ -4,7 +4,7 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = current_user.sprints.where(project_id: params[:project_id])
+    @sprints = current_user.projects.find(params[:project_id]).sprints
     authorize Sprint
   end
 

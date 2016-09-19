@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks.where(sprint_id: params[:sprint_id])
+    #@tasks = current_user.tasks.where(sprint_id: params[:sprint_id])
+    @tasks = current_user.projects.find(params[:project_id]).sprints.find( params[:sprint_id]).tasks
   end
 
   # GET /tasks/1
