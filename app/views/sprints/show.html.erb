@@ -4,6 +4,7 @@
       <p> <strong> Opening date: </strong><%=  @sprint.opening_date %> </p>
       <p> <strong> Closing date: </strong><%= @sprint.closing_date %></p>
       <p> <strong> Project: </strong><%= link_to @sprint.project.name, @sprint.project %></p>
+      <p ><%= @sprint.tasks.size  %> <%= link_to 'tasks', project_sprint_tasks_path(@sprint.project, @sprint) %></p>
     </div>
  </div>
 

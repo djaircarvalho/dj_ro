@@ -12,7 +12,7 @@
           <% end %>
        </div>
      </div>
-     <div class="panel panel-default" > <div class="panel-heading"> Sprintis of this project </div>
+     <div class="panel panel-default" > <div class="panel-heading"> <%= link_to 'Sprints of this project', project_sprints_path( @project ) %></div>
         <div class="panel-body">
           <% @project.sprints.each do |sprint| %>
             <p> <%= link_to sprint.name, [@project,sprint]   %></p>
