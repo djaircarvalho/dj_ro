@@ -3,11 +3,22 @@
     <div class="panel-body">
       <p> <strong> Description: </strong><%=  @task.description %> </p>
       <p> <strong> Status: </strong><%=  @task.status %> </p>
-      <p> <strong> Estimated Time: </strong><%= @task.estimated_time %></p>
-      <p> <strong> Time spent: </strong><%=  @task.time_spent %></p>
+      <p> <strong> Estimated Time: </strong><%= @task.estimated_time %> minutes</p>
+      <p> <strong> Time spent: </strong><%=  @task.time_spent.nil? ? 0 : @task.time_spent %> minutes</p>
       <p> <strong> Sprint: </strong><%= @task.sprint.name %></p>
+      <p> <strong> Assigned to: </strong><%= @task.user.nil? ? ' - ' : @task.user.name %></p>
+
     </div>
   </div>
+  <% if policy(@task).start? %>
+    <%= link_to 'Start', start_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), method: :put,  class: 'btn btn-info' %>
+  <% end %>
+  <% if policy(@task).stop? %>
+    <%= link_to 'Stop', stop_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), method: :put, class: 'btn btn-info' %>
+  <% end %>
+  <% if policy(@task).finish? %>
+    <%= link_to 'Finish', finish_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), method: :put, class: 'btn btn-info' %>
+  <% end %>
 
 <% if policy(Task).edit? %>
   <%= link_to 'Edit', edit_project_sprint_task_path(@task.sprint.project,@task.sprint, @task), class: 'btn btn-info' %>

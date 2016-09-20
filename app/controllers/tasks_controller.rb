@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :start, :stop, :finish ]
 
   # GET /tasks
   # GET /tasks.json
@@ -71,6 +71,36 @@ class TasksController < ApplicationController
       format.html { redirect_to [@project,@sprint], notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def start
+    set_project_and_sprint
+    authorize @task
+    @task.start(current_user)
+    respond_to do |format|
+      format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully started.' }
+      format.json { render :show, status: :ok, location: @task }
+    end
+  end
+
+  def stop
+    set_project_and_sprint
+    authorize @task
+    @task.stop
+    respond_to do |format|
+      format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully stoped.' }
+      format.json { render :show, status: :ok, location: @task }
+    end
+  end
+
+  def finish
+    set_project_and_sprint
+    authorize @task
+    @task.finish
+    respond_to do |format|
+      format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully finished.' }
+      format.json { render :show, status: :ok, location: @task }
+    end  
   end
 
   private

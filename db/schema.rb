@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918231704) do
+ActiveRecord::Schema.define(version: 20160919233002) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -41,13 +41,17 @@ ActiveRecord::Schema.define(version: 20160918231704) do
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "estimated_time", precision: 5, scale: 2
-    t.decimal  "time_spent",     precision: 5, scale: 2
+    t.integer  "estimated_time"
+    t.integer  "time_spent"
     t.integer  "sprint_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "status"
+    t.datetime "started_in"
+    t.datetime "finished_in"
+    t.integer  "user_id"
     t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|

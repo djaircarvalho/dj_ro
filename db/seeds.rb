@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 djair = User.create!(name: 'Djair Carvalho', email: 'djaircarvalho.dj7@gmail.com', password: '12345678',  admin:true)
-rosa =User.create!(name: 'Rosemberg de Santana', email: 'rosembergdesantana@gmail.com', password: '12345678',  admin:false)
+rosa = User.create!(name: 'Rosemberg de Santana', email: 'rosembergdesantana@gmail.com', password: '12345678',  admin:false)
+
+proj = Project.create!(name: "Cooperativa de Animais Abandonados", opening_date: Time.zone.local(2011,4,12,14,0), closing_date:Time.zone.local(2014,4,12,14,0))

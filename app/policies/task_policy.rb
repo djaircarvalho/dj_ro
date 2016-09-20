@@ -18,4 +18,18 @@ class TaskPolicy < ApplicationPolicy
     def edit?
       @user.admin?
     end
+
+    def start?
+       return false if @record.status.running?
+       @user.admin?  || ( @record.user.nil? &&  @user.sprints.include?(@record.sprint) ||  @record.user == @user)
+    end
+
+    def stop?
+      return false if !@record.status.running?
+      @user.admin? || @record.user == @user
+    end
+
+    def finish?
+      @user.admin? || @record.user == @user
+    end
 end

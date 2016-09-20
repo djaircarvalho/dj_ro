@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :sprints do
-        resources :tasks
+        resources :tasks do
+          put "start",          on: :member
+          put "stop",           on: :member
+          put "finish",         on: :member
+        end
     end
   end
   resources :teams

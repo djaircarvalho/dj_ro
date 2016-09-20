@@ -11,8 +11,8 @@
         <h4> <%=link_to task.sprint.name, [task.sprint.project,task.sprint] %>,
            <%= link_to task.sprint.project.name, task.sprint.project %></h4>
         <div class="pull-right ">
-          <small class='list-group-item list-group-item-info' >Estimated Time: <%= task.estimated_time  %></small>
-          <small class='list-group-item list-group-item-info' > Time Spent: <%= task.time_spent  %></small>
+          <small class='list-group-item list-group-item-info' >Estimated Time: <%= task.estimated_time  %> minutes</small>
+          <small class='list-group-item list-group-item-info' > Time Spent: <%= task.time_spent.nil? ? 0 : task.time_spent  %> minutes</small>
         </div>
         <h5><%= link_to 'Show', [task.sprint.project, task.sprint, task], class: 'btn btn-info' %>
           <% if policy(Task).edit? %>
