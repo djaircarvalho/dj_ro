@@ -3,4 +3,4 @@
 * Ruby version - 2.3.1
 
 * Database initialization
- - Rake db:migrate
+ - rake db:drop && rake db:migrate &&rake db:seed
