@@ -13,7 +13,14 @@
           <small class='list-group-item list-group-item-info' >Estimated Time: <%= task.estimated_time  %> minutes</small>
           <small class='list-group-item list-group-item-info' > Time Spent: <%= task.time_spent.nil? ? 0 : task.time_spent  %> minutes</small>
         </div>
-        <h5><%= link_to 'Show', [task.sprint.project, task.sprint, task], class: 'btn btn-info' %> <%= link_to 'Edit', edit_project_sprint_task_path(task.sprint.project, task.sprint, task),class: 'btn btn-default' %> <%= link_to 'Destroy', [task.sprint.project, task.sprint, task], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></h5>
+        <h5><%= link_to 'Show', [task.sprint.project, task.sprint, task], class: 'btn btn-info' %>
+          <% if policy(Task).edit? %>
+            <%= link_to 'Edit', edit_project_sprint_task_path(task.sprint.project, task.sprint, task),class: 'btn btn-default' %>
+          <% end %>
+          <% if policy(Task).destroy? %>
+           <%= link_to 'Destroy', [task.sprint.project, task.sprint, task], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %>
+          <% end %>
+         </h5>
       </li>
     <% end %>
   </ol>
