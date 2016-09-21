@@ -14,13 +14,13 @@
           <small class='list-group-item list-group-item-info' >Closing date: <%= sprint.closing_date %></small>
         </div>
         <h5>
-          <% if policy(Sprint).show? %>
+          <% if policy(sprint).show? %>
             <%= link_to 'Show', [ sprint.project, sprint], class: 'btn btn-info' %>
           <% end %>
-          <% if policy(Sprint).edit? %>
+          <% if policy(sprint).edit? %>
             <%= link_to 'Edit', edit_project_sprint_path(sprint.project, sprint),class: 'btn btn-default' %>
           <% end %>
-          <% if policy(Sprint).destroy? %>
+          <% if policy(sprint).destroy? %>
             <%= link_to 'Destroy', [sprint.project, sprint], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %>
           <% end %>
         </h5>
