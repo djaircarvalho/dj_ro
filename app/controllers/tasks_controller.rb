@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     set_project_and_sprint()
-    @task = Task.new(task_params_new)
+    @task = Task.new(task_params)
     authorize @task, :new?
     respond_to do |format|
       if @task.save
@@ -100,7 +100,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to [@project,@sprint,@task], notice: 'Task was successfully finished.' }
       format.json { render :show, status: :ok, location: @task }
-    end  
+    end
   end
 
   private
@@ -118,9 +118,4 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :description, :estimated_time, :status, :time_spent, :sprint_id)
     end
-
-    def task_params_new
-      params.require(:task).permit(:title, :description, :estimated_time, :sprint_id)
-    end
-
 end

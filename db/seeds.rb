@@ -9,7 +9,7 @@ djair = User.create!(name: 'Djair Carvalho', email: 'djaircarvalho.dj7@gmail.com
 rosa = User.create!(name: 'Rosemberg de Santana', email: 'rosembergdesantana@gmail.com', password: '12345678',  admin:false)
 
 
-proj2 = Project.create!(name: "DjRo", opening_date: Time.zone.local(2016,7,12,14,0), closing_date: Time.zone.local(2016,10,12,14,0), expected_value: 800 )
+proj2 = Project.create!(name: "Dj_Ro", opening_date: Time.zone.local(2016,7,12,14,0), closing_date: Time.zone.local(2016,09,27,14,0), expected_value: 800 )
 proj3 = Project.create!(name: "Topicos Especiais", opening_date: Time.zone.local(2016,7,12,14,0), closing_date: Time.zone.local(2016,11,12,14,0),  expected_value: 800)
 
 
