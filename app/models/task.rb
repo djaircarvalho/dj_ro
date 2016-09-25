@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   belongs_to :user, optional: true
   enumerize :status, in: [:pending, :running, :stoped, :finished, :canceled, :homologating, :approved, :inconsistent, :implanted ], default: :pending, scope: true
 
-  scope :not_finished, -> { where(status: [:pending, :running,:inconsistent]) }
+  scope :not_finished, -> { where(status: [:pending, :running,:stoped, :inconsistent]) }
 
   def start(user)
     if !self.status.running?

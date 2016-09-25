@@ -36,8 +36,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :user_id %>
+    <%= f.select :user_id, @project.users.collect {|user| [ user.name, user.id ] },{include_blank: true,prompt: 'Select user'}, class: 'select2 form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :sprint_id %>
-    <%= f.select :sprint_id, current_user.sprints.all.collect {|sprint| [ sprint.name, sprint.id ] },{nclude_blank: true,prompt: 'Select Sprint'}, class: 'select2 form-control' %>
+    <%= f.select :sprint_id, current_user.sprints.all.collect {|sprint| [ sprint.name, sprint.id ] },{include_blank: true,prompt: 'Select Sprint'}, class: 'select2 form-control' %>
   </div>
 
   <div class="form-group">
