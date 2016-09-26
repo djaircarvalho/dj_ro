@@ -33,6 +33,11 @@ gem "pundit"
 gem 'bootstrap-sass'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'enumerize'
+
+gem 'chartkick'
+
+gem 'seed_dump'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

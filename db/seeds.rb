@@ -1,33 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-djair = User.create!(name: 'Djair Carvalho', email: 'djaircarvalho.dj7@gmail.com', password: '12345678',  admin:true)
-rosa = User.create!(name: 'Rosemberg de Santana', email: 'rosembergdesantana@gmail.com', password: '12345678',  admin:false)
+u = User.create!(email: "djaircarvalho.dj7@gmail.com", password:"12345678" , admin: true, name: "Djair Carvalho" )
+u1 = User.create!(
+  email: "rosembergdesantana@gmail.com", password:"12345678", admin: false, name: "Rosemberg de Santana")
+
+p = Project.create!(
+  name: "Dj_Ro", opening_date: "2016-07-21", closing_date: "2016-09-27", expected_value: nil)
+
+p.users << [u, u1]
+  
+s1 = Sprint.create!(
+  name: "Agosto", opening_date: "2016-08-01", closing_date: "2016-09-30", project: p
+)
 
 
-proj2 = Project.create!(name: "Dj_Ro", opening_date: Time.zone.local(2016,7,12,14,0), closing_date: Time.zone.local(2016,09,27,14,0), expected_value: 800 )
-proj3 = Project.create!(name: "Topicos Especiais", opening_date: Time.zone.local(2016,7,12,14,0), closing_date: Time.zone.local(2016,11,12,14,0),  expected_value: 800)
-
-
-proj2.users << djair << rosa
-proj3.users << djair << rosa
-
-sp1 = Sprint.create!(name: "Agosto (2016)", opening_date: Time.zone.local(2016,8,1,14,0), closing_date: Time.zone.local(2016,9,1,14,0), project: proj2)
-sp2 = Sprint.create!(name: "Setembro (2016)", opening_date: Time.zone.local(2016,9,1,14,0), closing_date: Time.zone.local(2016,10,1,14,0), project: proj2)
-sp3 = Sprint.create!(name: "Agosto (2016)", opening_date: Time.zone.local(2016,8,1,14,0), closing_date: Time.zone.local(2016,9,1,14,0), project: proj3)
-
-lorem1 = "É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de Conteúdo aqui, conteúdo aqui, fazendo com que ele tenha uma aparência similar a de um texto legível."
-lorem2 = "Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por 'lorem ipsum' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero)."
-
-20.times do |i|
-  sp1.tasks.create!(title: "SP1 - Task #{ i + 1}" , description: (i % 2 == 0) ? lorem1 : lorem2, estimated_time:  (i % 2 == 0) ? 120 : 180 )
-  sp2.tasks.create!(title: "SP2 - Task #{ i + 1}" , description: (i % 2 == 0) ? lorem1 : lorem2, estimated_time:  (i % 2 == 0) ? 120 : 180 )
-  sp3.tasks.create!(title: "SP3 - Task #{ i + 1}" , description: (i % 2 == 0) ? lorem1 : lorem2, estimated_time:  (i % 2 == 0) ? 120 : 180 )
-end
-
-proj2.sprints << sp1 << sp2
-proj3.sprints << sp3
+s2 = Sprint.create!(name: "Setembro", opening_date: "2016-09-01", closing_date: "2016-09-27", project: p )
+Task.create!([
+  {title: "Brainstorming", description: "Deve ser realizado brainstorming para elencar os pontos a serem levados em consideração para o desenvolvimento da ferramenta.", estimated_time: 120, time_spent: 130, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-07-29 14:12:54", user: u },
+  {title: "Preparar Modelo", description: "Deve ser criado o  documento de requisitos ( modelo preliminar, diagrama de caso de uso e diagrama de classes)", estimated_time: 360, time_spent: 320, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-08-06 14:12:54", user: u },
+  {title: "Iniciar o desenvolvimento do sistema", description: "Iniciar Projeto (rails new),\r\niniciar o repositório git,\r\nconfigurar o devise ( gem de autenticação),\r\nGerar scaffolding  de Team,\r\nGerar scaffolding Project,\r\nGerar scaffolding Sprint(ciclo),\r\nGerar scaffolding Task", estimated_time: 360, time_spent: 360, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-08-03 14:12:54", user: u1 },
+  {title: "Adicionar relacionamentos", description: "Adicionar many_to_many entre user e team,\r\n\r\nadicionar many_to_many entre user e project,\r\n\r\nadicionar has_many de project para sprint e belongs_to no sentido contrario,\r\n\r\nadicionar belongs_to de task para sprint e o has_many no sentido contrario,\r\n\r\ntestar os relacionamentos (pelo menos no rails console)", estimated_time: 120, time_spent: 140, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-08-03 14:12:54", user: u },
+  {title: "Configurar a gem do bootstrap", description: "Deve ser configurada a gem do bootstrap.", estimated_time: 30, time_spent: 40, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-08-03 14:12:54", user: u },
+  {title: "Exibir todos os projetos na pagina inicial do usuario", description: "Deve ser considerado o root do projeto para exibir todos os projetos na pagina inicial do usuario", estimated_time: 120, time_spent: 100, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-08-04 14:12:54", user: u1 },
+  {title: "Adicionar Menu superior", description: "Deve ser adicionado um menu suprerior para apresentar acesso rápido as funcionalidades do sistema.", estimated_time: 60, time_spent: 80, sprint: s1, status: "finished", started_in: nil, finished_in: "2016-08-04 14:12:54", user: u1 },
+  {title: "Modificar routes.rb para implementação aninhada", description: "As rotas devem estar disponiveis no formato projects/id_project/sprint/id_sprint/tasks/id_task.", estimated_time: 10, time_spent: 10, sprint: s2, status: "finished", started_in: nil, finished_in: "2016-08-10 14:12:54", user: u1 },
+  {title: "Corrigir views de project para novo modelo aninhado", description: "Devem ser corrigidos as chamadas a links em todas as views.", estimated_time: 360, time_spent: 360, sprint: s2, status: "finished", started_in: nil, finished_in: "2016-08-11 14:12:54", user: u },
+  {title: "Corrigir views de sprint para novo modelo aninhado", description: "Corrigir todas as referencias a sprints para o novo modelo de routes", estimated_time: 240, time_spent: 240, sprint: s2, status: "canceled", started_in: nil, finished_in: "2016-08-10 14:12:54", user: u },
+  {title: "Corrigir views de task para novo modelo aninhado", description: "Corrigir todas as referencias à tasks para o novo modelo de rotas", estimated_time: 240, time_spent: 240, sprint: s2, status: "finished", started_in: nil, finished_in: "2016-08-11 14:12:54", user: u },
+  {title: "Adicionar campo admin em user", description: "Adicionar o campo admin do tipo boolean no modelo de user para indicar se o mesmo eh administrador.", estimated_time: 20, time_spent: 20, sprint: s2, status: "homologating", started_in: nil, finished_in: "2016-08-12 14:12:54", user: u },
+  {title: "Adicionar gem do pundit e configura-la", description: "Estudar a documentação da gem pundit e configura-la no projeto", estimated_time: 40, time_spent: 40, sprint: s2, status: "finished", started_in: nil, finished_in: "2016-08-13 14:12:54", user: u },
+  {title: "configurar autotização de  projetos", description: "configurar autotização de usuario para que apenas admin possa criar e gerenciar projetos", estimated_time: 30, time_spent: 30, sprint: s2, status: "finished", started_in: nil, finished_in: "2016-08-14 14:12:54", user: u1 },
+  {title: "configurar autotização de  sprints", description: "configurar autotização de usuario para que apenas admin possa criar e gerenciar sprints.", estimated_time: 30, time_spent: 30, sprint: s2, status: "stoped", started_in: nil, finished_in: "2016-08-14 14:12:54", user: u },
+  {title: "configurar autotização de  tarefas", description: "configurar autotização de usuario para que apenas admin possa criar e gerenciar tarefas", estimated_time: 30, time_spent: 30, sprint: s2, status: "canceled", started_in: nil, finished_in: "2016-08-14 14:12:54", user: u },
+  {title: "Adicionar status em task", description: "Adicionar enum para representar a situação da tarefa.", estimated_time: 10, time_spent: 10, sprint: s2, status: "finished", started_in: nil, finished_in: "2016-09-25 14:12:33", user: u }
+])

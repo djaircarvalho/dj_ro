@@ -7,6 +7,18 @@
       <p ><%= @sprint.tasks.size  %> <%= link_to 'tasks', project_sprint_tasks_path(@sprint.project, @sprint) %></p>
     </div>
  </div>
+ <% if current_user.admin? %>
+   <div class="col-xs-6">
+     <h4> Tasks by status</h4>
+     <%= pie_chart @sprint.tasks.group(:status).count %>
+   </div>
+
+   <div class="col-xs-6">
+     <h4> Tasks solved by user</h4>
+     <%= pie_chart @sprint.tasks.group(:user).count %>
+   </div>
+ <% end %>
+
 
 <% if policy(Sprint).edit? %>
   <%= link_to 'Edit', edit_project_sprint_path(@sprint.project, @sprint), class: 'btn btn-info' %>
