@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919233002) do
+ActiveRecord::Schema.define(version: 20160926214449) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20160919233002) do
     t.date     "opening_date"
     t.date     "closing_date"
     t.integer  "project_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.decimal  "value",        precision: 5, scale: 2
     t.index ["project_id"], name: "index_sprints_on_project_id"
   end
 

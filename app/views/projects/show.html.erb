@@ -5,6 +5,7 @@
     <p> <strong> Opening date: </strong><%=  @project.opening_date %> </p>
       <p> <strong> Closing date: </strong><%= @project.closing_date %></p>
       <p> <strong> Expected value: </strong><%=  number_to_currency @project.expected_value,{unit: 'R$ '} %></p>
+      <p> <strong>  Value spent so far: </strong><%=  number_to_currency @project.sprints.sum(:value),{unit: 'R$ '} %></p>
       <div class="panel panel-default" > <div class="panel-heading"> Users in this project </div>
 	<div class="panel-body">
           <% @project.users.each do |user| %>
@@ -18,6 +19,15 @@
             <p> <%= link_to sprint.name, [@project,sprint]   %></p>
           <% end %>
        </div>
+        <div class="col-xs-12">
+          <h4> Timeline</h4>
+           <%= timeline @project.sprints.map{ |s| [s.name, s.opening_date, s.closing_date] }  %>
+        </div>
+        <div class="col-xs-12">
+
+          <h4> Value spent so far: (<%=  number_to_currency @project.sprints.sum(:value),{unit: 'R$ '}%>)</h4>
+           <%= bar_chart @project.sprints.group(:name).sum(:value), xtitle: "Value(R$)", ytitle: "Sprint" %>
+        </div>
      </div>
 
     </div>

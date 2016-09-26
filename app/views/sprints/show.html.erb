@@ -4,6 +4,7 @@
       <p> <strong> Opening date: </strong><%=  @sprint.opening_date %> </p>
       <p> <strong> Closing date: </strong><%= @sprint.closing_date %></p>
       <p> <strong> Project: </strong><%= link_to @sprint.project.name, @sprint.project %></p>
+      <p> <strong> Value: </strong><%=  number_to_currency @sprint.value,{unit: 'R$ '}%></p>
       <p ><%= @sprint.tasks.size  %> <%= link_to 'tasks', project_sprint_tasks_path(@sprint.project, @sprint) %></p>
     </div>
  </div>
@@ -17,7 +18,9 @@
      <h4> Tasks solved by user</h4>
      <%= pie_chart @sprint.tasks.group(:user).count %>
    </div>
- <% end %>
+
+
+<% end %>
 
 
 <% if policy(Sprint).edit? %>
