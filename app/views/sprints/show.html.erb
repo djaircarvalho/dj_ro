@@ -19,6 +19,11 @@
      <%= pie_chart @sprint.tasks.group(:user).count %>
    </div>
 
+   <div class="col-xs-12">
+     <h4> Estimate/Spent Time</h4>
+      <%= bar_chart @sprint.tasks.map{ |t| [t.description,   t.time_spent - t.estimated_time] }  %>
+   </div>
+   <div class="col-xs-12">
 
 <% end %>
 
